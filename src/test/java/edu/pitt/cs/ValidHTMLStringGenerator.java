@@ -130,7 +130,7 @@ public class ValidHTMLStringGenerator extends Generator<String> {
         int end_i=larger.indexOf("</i>",start_i+3);
         while(start_i!=-1){
 //            no match
-            if(end_i==-1) break;
+            if(start_i==-1) break;
             String mid=larger.substring(start_i+3,end_i);
 //            longer than expected
             if(mid.contains("<")||mid.contains(">")) start_i=larger.indexOf("<i>",start_i+3);
