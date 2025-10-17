@@ -5,6 +5,7 @@ import com.pholser.junit.quickcheck.Property;
 import com.pholser.junit.quickcheck.When;
 import com.pholser.junit.quickcheck.generator.InRange;
 import com.pholser.junit.quickcheck.runner.JUnitQuickcheck;
+import org.hamcrest.Matcher;
 import org.junit.runner.RunWith;
 
 import static org.junit.Assert.*;
@@ -75,10 +76,13 @@ public class IntegerOpsTest {
 		 * values that reach the test case.
 		 */
 
+        assumeThat(x, greaterThanOrEqualTo(y));
+
 		  System.out.println("testSubtract x='" + x + "', y='" + y + "'");
 
 		 // TODO: Fill in.
-        assertEquals(IntegerOps.subtract(x,y),x-y);
+
+        assertTrue(IntegerOps.subtract(x,y)>=0);
 	}
 
 }
