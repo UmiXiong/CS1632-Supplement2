@@ -116,7 +116,6 @@ public class ValidHTMLStringGenerator extends Generator<String> {
         String middle_b=larger.substring(start+3,end);
         if (middle_b.isEmpty()){
             temp=larger.substring(0,start).concat(larger.substring(end+4));
-            newStr.add(temp);
         }
         start=larger.indexOf("<i>");
         if(start!=-1) end=larger.indexOf("</i>",start+3);
