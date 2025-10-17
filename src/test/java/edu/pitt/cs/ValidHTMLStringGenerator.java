@@ -114,6 +114,7 @@ public class ValidHTMLStringGenerator extends Generator<String> {
 //        "<b></b>"
 
         while(start_b!=-1){
+//            update endb when needed
             int end_b=larger.indexOf("</b>",start_b+3);
 //            no match
             if(start_b==-1) break;
@@ -129,6 +130,7 @@ public class ValidHTMLStringGenerator extends Generator<String> {
         int start_i=larger.indexOf("<i>");
 //        "<i></i>"
         while(start_i!=-1){
+//            update endi when needed
             int end_i=larger.indexOf("</i>",start_i+3);
 //            no match
             if(start_i==-1) break;
