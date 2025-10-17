@@ -103,28 +103,39 @@ public class ValidHTMLStringGenerator extends Generator<String> {
 	@Override
 	public List<String> doShrink(SourceOfRandomness random, String larger) {
 		// TODO: Fill in looking at the Javadoc comments above and ABCStringGenerator
-        int start=-1,end=-1;
-        List<String> newStr=new ArrayList<>();
-        String temp="";
-        newStr.add(larger);
+        List<String> newString=new ArrayList<>();
+//        only has b/i
 
-
-//        remove b
-        start=larger.indexOf("<b>");
-        if(start!=-1) end=larger.indexOf("</b>",start+3);
-        if(start==-1||end==-1) return newStr;
-        String middle_b=larger.substring(start+3,end);
-        if (middle_b.isEmpty()){
-            temp=larger.substring(0,start).concat(larger.substring(end+4));
+        int start_b=larger.indexOf("<b>");
+//        "<b></b>"
+        int end_b=larger.indexOf("</b>",start_b+3);
+        while(start_b!=-1){
+//            no match
+            if(end_b==-1) break;
+            String pairs=larger.substring(start_b,end_b+1);
+//            longer than expected
+            if(pairs.length()>7) start_b=larger.indexOf("<b>",start_b+3);
+            else{
+                String newOne=larger.substring(0,start_b).concat(larger.substring(end_b+4));
+                newString.add(newOne);
+                return newString;
+            }
         }
-        start=larger.indexOf("<i>");
-        if(start!=-1) end=larger.indexOf("</i>",start+3);
-        if(start==-1||end==-1) return newStr;
-        String middle_i=larger.substring(start+3,end);
-        if (middle_i.isEmpty()){
-            temp=larger.substring(0,start).concat(larger.substring(end+4));
-            newStr.add(temp);
+        int start_i=larger.indexOf("<i>");
+//        "<i></i>"
+        int end_i=larger.indexOf("</i>",start_i+3);
+        while(start_i!=-1){
+//            no match
+            if(end_i==-1) break;
+            String pairs=larger.substring(start_i,end_b+1);
+//            longer than expected
+            if(pairs.length()>7) start_i=larger.indexOf("<i>",start_i+3);
+            else{
+                String newOne=larger.substring(0,start_i).concat(larger.substring(end_i+4));
+                newString.add(newOne);
+                return newString;
+            }
         }
-		return newStr;
+        return Collections.emptyList();
 	}
 }
