@@ -56,6 +56,6 @@ public class StringOps {
 				}
 			}
 		}
-		return stack.empty();
+		return stack.isEmpty();
 	}
 }

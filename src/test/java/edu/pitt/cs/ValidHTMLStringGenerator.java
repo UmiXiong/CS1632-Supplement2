@@ -104,6 +104,10 @@ public class ValidHTMLStringGenerator extends Generator<String> {
 	public List<String> doShrink(SourceOfRandomness random, String larger) {
 		// TODO: Fill in looking at the Javadoc comments above and ABCStringGenerator
         List<String> newString=new ArrayList<>();
+
+
+//        <b><i><i><i></i><i></i></i><b></b><i><i></i><i></i></i></i><i></i></b>
+//        <b><i><i><i></i><i></i></i>       <i><i></i><i></i></i></i><i></i></b>
 //        only has b/i
 
         int start_b=larger.indexOf("<b>");
@@ -112,13 +116,13 @@ public class ValidHTMLStringGenerator extends Generator<String> {
         while(start_b!=-1){
 //            no match
             if(end_b==-1) break;
-            String pairs=larger.substring(start_b,end_b+1);
+            String mid=larger.substring(start_b+3,end_b);
 //            longer than expected
-            if(pairs.length()>7) start_b=larger.indexOf("<b>",start_b+3);
+            if(mid.contains("<")||mid.contains(">")) start_b=larger.indexOf("<b>",start_b+3);
             else{
                 String newOne=larger.substring(0,start_b).concat(larger.substring(end_b+4));
                 newString.add(newOne);
-                return newString;
+                break;
             }
         }
         int start_i=larger.indexOf("<i>");
@@ -127,15 +131,15 @@ public class ValidHTMLStringGenerator extends Generator<String> {
         while(start_i!=-1){
 //            no match
             if(end_i==-1) break;
-            String pairs=larger.substring(start_i,end_b+1);
+            String mid=larger.substring(start_i+3,end_i);
 //            longer than expected
-            if(pairs.length()>7) start_i=larger.indexOf("<i>",start_i+3);
+            if(mid.contains("<")||mid.contains(">")) start_i=larger.indexOf("<i>",start_i+3);
             else{
                 String newOne=larger.substring(0,start_i).concat(larger.substring(end_i+4));
                 newString.add(newOne);
-                return newString;
+                break;
             }
         }
-        return Collections.emptyList();
+        return newString;
 	}
 }
