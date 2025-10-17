@@ -12,7 +12,7 @@ public class IntegerOps {
 	 */
 	public static int add(int x, int y) {
 		// TODO: Fix bug!
-        if(x>0&&y>0&&x+y<0) return 0;
+        if(x>=0&&y>=0&&x+y<0) return 0;
         if(x<0&&y<0&&x+y>0) return 0;
 		return x + y;
 	}
@@ -28,7 +28,7 @@ public class IntegerOps {
 	 */
 	public static int subtract(int x, int y) {
 		// TODO: Fix bug!
-        if(x<0&&y>0&&x-y>0) return 0;
+        if(x<=0&&y>=0&&x-y>0) return 0;
         if(x>0&&y<0&&x-y<0) return 0;
 		return x - y;
 	}
