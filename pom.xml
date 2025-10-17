@@ -59,6 +59,12 @@
       <artifactId>slf4j-simple</artifactId>
       <version>${slf4j.version}</version>
     </dependency>
+      <dependency>
+          <groupId>com.pholser</groupId>
+          <artifactId>junit-quickcheck-core</artifactId>
+          <version>0.9</version>
+          <scope>compile</scope>
+      </dependency>
 
   </dependencies>
 
