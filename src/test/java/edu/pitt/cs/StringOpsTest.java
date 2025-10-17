@@ -25,8 +25,10 @@ public class StringOpsTest {
 	 */
 	@Property(trials = 1000)
 	public void testEquals(@From(ABCStringGenerator.class)  String s1, @From(ABCStringGenerator.class) String s2) {
+        assumeThat(s1.length(),not(equalTo(s2.length())));
 		 System.out.println("testEquals s1='" + s1 + "', s2='" + s2 + "'");
 		// TODO: Fill in.
+        assertFalse(StringOps.equals(s1,s2));
 	}
 
 	/**

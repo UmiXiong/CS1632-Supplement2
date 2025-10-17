@@ -20,7 +20,7 @@ public class StringOps {
 			}
 		}
 //        if they have the same length, they are similar, otherwise they aren't
-		return s1.length()==s2.length();
+		return s1.equals(s2);
 	}
 
 	/**
